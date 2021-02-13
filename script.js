@@ -75,7 +75,6 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             .attr('id', 'main')
             .attr('width', canvasWidth + 280)
             .attr('height', canvasHeight + 50)
-            .attr('transform', `scale(${0.8})`)
 
         // Calling X - Y Axes
         svg.append('g')
