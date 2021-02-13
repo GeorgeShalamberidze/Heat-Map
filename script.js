@@ -26,8 +26,6 @@ const colors = [
     "#d7191c",
 ]
 
-
-
 var parseTime = d3.timeFormat('%B')
 const tooltip = d3.select('.scatter-container')
     .append('div')
@@ -64,7 +62,6 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             .axisBottom(xScale)
             .tickFormat(d3.format('d'))
 
-
         const yAxis = d3
             .axisLeft(yScale)
             .tickFormat((month) => {
@@ -74,8 +71,8 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             })
 
         // Creating SVG
-        const svg = d3.select('.scatter-container')
-            .append('svg')
+        const svg = d3.select('#svg')
+            .attr('id', 'main')
             .attr('width', canvasWidth + 280)
             .attr('height', canvasHeight + 50)
             .attr('transform', `scale(${0.8})`)
@@ -120,11 +117,11 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
                     )
                     .attr('data-year', i.year)
 
-                    onmousemove = function (e) {
-                        tooltip
-                            .style("left", `${e.clientX - 45}px`)
-                            .style("top", `${e.clientY - 90}px`)
-                    }
+                onmousemove = function (e) {
+                    tooltip
+                        .style("left", `${e.clientX - 45}px`)
+                        .style("top", `${e.clientY - 90}px`)
+                }
             })
             .on('mouseout', (d, i) => {
                 tooltip
@@ -143,7 +140,7 @@ d3.json('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/mas
             .append('svg')
             .attr('width', legendWidth)
             .attr('height', legendHeight)
-            .attr('id', 'legend')
+            .attr('id', 'legend-svg')
             .selectAll('rect')
             .data(colors)
             .enter()
